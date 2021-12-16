@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState} from 'react';
 import {
   Item,
   RadioButtonLabel,
@@ -6,21 +6,36 @@ import {
   StyledTextarea,
   Wrapper
 } from './styles';
+import { generateSentence } from '../utils/helper';
 
 const Typing = () => {
   const [autoGenerateText, setAutoGenerateText] = useState(false);
   const [text, setText] = useState("");
+
+  const handleAutogenerateText = () => {
+    const shouldGenerateText = !autoGenerateText;
+    if (shouldGenerateText) {
+      setText(generateSentence());
+    } else {
+      setText("");
+    }
+    setAutoGenerateText(shouldGenerateText);
+  }
+
   return <Wrapper>
     <Item>
       <RadioButton
         type="checkbox"
         name="autogeneratetext"
-        onChange={event => setAutoGenerateText(!autoGenerateText)}
+        onChange={event => handleAutogenerateText()}
       />
       <RadioButtonLabel />
       <div>Autogenerate Text</div>
     </Item>
-    <StyledTextarea/>
+    <StyledTextarea 
+      value={text} 
+      onChange={event => setText(event.target.value)}
+    />
     <StyledTextarea />
   </Wrapper>
 }

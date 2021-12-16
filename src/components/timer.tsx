@@ -84,6 +84,7 @@ const Timer: FC<TimerProps> = ({
   const [timerAction, setTimerAction] = useState("Start");
   
   const updateSeconds = () => {
+    setShowResult(false);
     if (minutes === 0 && seconds === 0) {
       setSeconds(0);
       setMinutes(0);

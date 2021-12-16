@@ -6,7 +6,8 @@ import {
   RadioButton,
   Input,
   Text,
-  Button
+  Button,
+  Wrapper
 } from './styles';
 
 interface CountdownTimerProps {
@@ -95,7 +96,7 @@ const Timer: FC<TimerProps> = ({durationOptions}) => {
     }
   })
 
-  return <Fragment>
+  return <Wrapper>
     <CountdownTimer 
       minutes={minutes}
       seconds={seconds}
@@ -107,7 +108,7 @@ const Timer: FC<TimerProps> = ({durationOptions}) => {
       canStartTimer={canStartTimer}
       timerAction={timerAction}
     />
-  </Fragment>
+  </Wrapper>
 }
 
 export default Timer;

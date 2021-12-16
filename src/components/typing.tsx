@@ -4,13 +4,13 @@ import {
   RadioButtonLabel,
   RadioButton,
   StyledTextarea,
-  TypingWrapper
+  Wrapper
 } from './styles';
 
 const Typing = () => {
   const [autoGenerateText, setAutoGenerateText] = useState(false);
   const [text, setText] = useState("");
-  return <TypingWrapper>
+  return <Wrapper>
     <Item>
       <RadioButton
         type="checkbox"
@@ -22,7 +22,7 @@ const Typing = () => {
     </Item>
     <StyledTextarea/>
     <StyledTextarea />
-  </TypingWrapper>
+  </Wrapper>
 }
 
 export default Typing;

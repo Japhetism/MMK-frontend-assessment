@@ -76,7 +76,7 @@ const Input = styled.input`
   }
 `;
 
-const Text = styled.p`
+const Text = styled.span`
   color: red;
   text-align: left;
   font-size: 30px;
@@ -105,7 +105,6 @@ const StyledTextarea = styled.textarea`
 
 const Grid = styled.div`
   display: grid;
-  height: 100vh;
   grid-template-rows: 0.2fr 1fr 0.5fr 0.5fr;
   grid-template-areas:
     "nav nav nav nav"
@@ -132,6 +131,33 @@ const Section = styled.div`
   padding: .5rem
 `;
 
+const StyledTable = styled.table`
+  caption-side: top;
+  border: none;
+  border-collapse: collapse;
+  caption-side: bottom;
+  td,
+  th {
+    border: none;
+  }
+  td {
+    padding: 5px 20px;
+    width: 50%;
+    :nth-of-type(even) {
+      text-align: right;
+    }
+  }
+  tbody tr {
+    height: 50px;
+    font-size: 20px;
+    :nth-of-type(odd) {
+      background-color: #efefef;
+    }
+  }
+`;
+
+const H2 = styled.h2``;
+
 export {
   DurationWrapper,
   Item,
@@ -143,5 +169,7 @@ export {
   StyledTextarea,
   Wrapper,
   Grid,
-  Section
+  Section,
+  StyledTable,
+  H2
 }

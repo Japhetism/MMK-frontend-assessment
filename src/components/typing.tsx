@@ -1,16 +1,61 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {
   Item,
   RadioButtonLabel,
   RadioButton,
   StyledTextarea,
-  Wrapper
+  Wrapper,
+  Section,
+  StyledTable,
+  H2
 } from './styles';
-import { generateSentence } from '../utils/helper';
+import { generateSentence, generateResult } from '../utils/helper';
 
-const Typing = () => {
+interface TypingProps {
+  disableUserInput: boolean,
+  showResult: boolean,
+}
+
+interface TypingResultProps {
+  text: string,
+  userInput: string
+}
+
+const TypingResult: FC<TypingResultProps> = ({
+  text,
+  userInput
+}) => {
+  
+  const {accuracy, correctWords, wrongWords} = generateResult(text, userInput);
+
+  return <Section>
+    <H2>Your Result:</H2>
+    <StyledTable>
+      <tbody>
+        <tr>
+          <td>Accuracy</td>
+          <td>{accuracy}%</td>
+        </tr>
+        <tr>
+          <td>Correct Words</td>
+          <td>{correctWords}</td>
+        </tr>
+        <tr>
+          <td>Wrong Words</td>
+          <td>{wrongWords}</td>
+        </tr>
+      </tbody>
+    </StyledTable>
+  </Section>
+}
+
+const Typing: FC<TypingProps> = ({
+  disableUserInput,
+  showResult
+}) => {
   const [autoGenerateText, setAutoGenerateText] = useState(false);
   const [text, setText] = useState("");
+  const [userInput, setUserInput] = useState("");
 
   const handleAutogenerateText = () => {
     const shouldGenerateText = !autoGenerateText;
@@ -36,7 +81,16 @@ const Typing = () => {
       value={text} 
       onChange={event => setText(event.target.value)}
     />
-    <StyledTextarea />
+    <StyledTextarea 
+      disabled={disableUserInput}
+      onChange={event => setUserInput(event.target.value)}
+    />
+    {showResult ? 
+      <TypingResult
+        text={text}
+        userInput={userInput} 
+      /> 
+    : null}
   </Wrapper>
 }
 

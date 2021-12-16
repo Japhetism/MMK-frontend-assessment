@@ -37,3 +37,26 @@ export const generateSentence  = () => {
 
   return `${content1} ${content2}`;
 }
+
+export const generateResult = (text:string, userInput:string) => {
+  let correctWords = 0;
+  let wrongWords = 0;
+  const textArray = text.split(" ");
+  const textArrayLength = textArray.length;
+  const userInputArray = userInput.split(" ");
+
+  for (let i = 0; i < textArrayLength; i++) {
+    if (textArray[i] === userInputArray[i]) {
+      correctWords++;
+    } else {
+      wrongWords++;
+    }
+  }
+
+  return {
+    accuracy: (correctWords/textArrayLength) * 100,
+    correctWords,
+    wrongWords
+  }
+
+}

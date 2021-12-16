@@ -76,7 +76,7 @@ const Input = styled.input`
   }
 `;
 
-const Text = styled.p`
+const Text = styled.span`
   color: red;
   text-align: left;
   font-size: 30px;
@@ -91,6 +91,73 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
+const Wrapper = styled.div`
+  margin: 30px;
+`;
+
+const StyledTextarea = styled.textarea`
+  width: 100%;
+  height: 200px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 0.2fr 1fr 0.5fr 0.5fr;
+  grid-template-areas:
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar content content content"
+    "sidebar footer footer footer";
+  grid-gap: 0.25rem;
+  transition: all 0.25s ease-in-out;
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1fr;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "main"
+      "content"
+      "footer";
+  }
+`;
+
+const Section = styled.div`
+  display: flex
+  justify-content: center
+  padding: .5rem
+`;
+
+const StyledTable = styled.table`
+  caption-side: top;
+  border: none;
+  border-collapse: collapse;
+  caption-side: bottom;
+  td,
+  th {
+    border: none;
+  }
+  td {
+    padding: 5px 20px;
+    width: 50%;
+    :nth-of-type(even) {
+      text-align: right;
+    }
+  }
+  tbody tr {
+    height: 50px;
+    font-size: 20px;
+    :nth-of-type(odd) {
+      background-color: #efefef;
+    }
+  }
+`;
+
+const H2 = styled.h2``;
+
 export {
   DurationWrapper,
   Item,
@@ -98,5 +165,11 @@ export {
   RadioButton,
   Input,
   Text,
-  Button
+  Button,
+  StyledTextarea,
+  Wrapper,
+  Grid,
+  Section,
+  StyledTable,
+  H2
 }

@@ -1,9 +1,8 @@
-import Timer from './components/timer';
+import React from 'react';
+import Screen from './screens';
 
-function App() {
-  return <Timer 
-    durationOptions={[1,2,3,4,5]}
-  />
+const App = () => {
+  return <Screen />
 }
 
 export default App;

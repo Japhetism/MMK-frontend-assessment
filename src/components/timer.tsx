@@ -6,7 +6,8 @@ import {
   RadioButton,
   Input,
   Text,
-  Button
+  Button,
+  Wrapper
 } from './styles';
 
 interface CountdownTimerProps {
@@ -16,6 +17,7 @@ interface CountdownTimerProps {
 
 interface DurationSelectorProps {
   durationOptions: Array<number>,
+  minutes: number,
   canStartTimer: boolean,
   timerAction: string,
   setCanStartTimer: (startTimer:boolean) => void
@@ -24,6 +26,8 @@ interface DurationSelectorProps {
 
 interface TimerProps {
   durationOptions: Array<number>
+  setDisableUserInput: (disableUserInput:boolean) => void
+  setShowResult: (showResult:boolean) => void
 }
 
 const CountdownTimer: FC<CountdownTimerProps> = ({minutes, seconds}) => {
@@ -33,7 +37,12 @@ const CountdownTimer: FC<CountdownTimerProps> = ({minutes, seconds}) => {
 }
 
 const DurationSelector: FC<DurationSelectorProps> = ({
-  durationOptions, timerAction,  setMinutes, canStartTimer, setCanStartTimer
+  durationOptions, 
+  timerAction,  
+  setMinutes, 
+  canStartTimer, 
+  setCanStartTimer,
+  minutes
 }) => {
   return <DurationWrapper>
     {durationOptions.map((duration:number) => (
@@ -56,6 +65,7 @@ const DurationSelector: FC<DurationSelectorProps> = ({
       onChange={event => setMinutes(parseInt(event.target.value))}
     />
     <Button
+      disabled={minutes > 0 ? false : true}
       onClick={() => setCanStartTimer(!canStartTimer)}
     >
       {timerAction}
@@ -63,25 +73,35 @@ const DurationSelector: FC<DurationSelectorProps> = ({
   </DurationWrapper>
 }
 
-const Timer: FC<TimerProps> = ({durationOptions}) => {
+const Timer: FC<TimerProps> = ({
+  durationOptions,
+  setDisableUserInput,
+  setShowResult
+}) => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [canStartTimer, setCanStartTimer] = useState(false);
   const [timerAction, setTimerAction] = useState("Start");
   
   const updateSeconds = () => {
+    setShowResult(false);
     if (minutes === 0 && seconds === 0) {
       setSeconds(0);
       setMinutes(0);
-      setTimerAction("Finished");
+      setTimerAction("Start");
+      setCanStartTimer(false);
+      setDisableUserInput(true);
+      setShowResult(true);
     } else {
       if (seconds === 0) {
         setMinutes(minutes => minutes - 1);
         setSeconds(59);
-        setTimerAction("Stop")
+        setTimerAction("In Progress...")
+        setDisableUserInput(false);
       } else {
         setSeconds(seconds => seconds - 1);
-        setTimerAction("Stop")
+        setTimerAction("In Progress...")
+        setDisableUserInput(false);
       }
     }
   }
@@ -95,19 +115,20 @@ const Timer: FC<TimerProps> = ({durationOptions}) => {
     }
   })
 
-  return <Fragment>
+  return <Wrapper>
     <CountdownTimer 
       minutes={minutes}
       seconds={seconds}
     />
     <DurationSelector 
       durationOptions={durationOptions}
+      minutes={minutes}
       setMinutes={setMinutes}
       setCanStartTimer={setCanStartTimer}
       canStartTimer={canStartTimer}
       timerAction={timerAction}
     />
-  </Fragment>
+  </Wrapper>
 }
 
 export default Timer;

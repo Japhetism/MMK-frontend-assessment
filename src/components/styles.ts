@@ -91,6 +91,18 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
+const TypingWrapper = styled.div`
+  margin: 30px;
+`;
+
+const StyledTextarea = styled.textarea`
+  width: 50%;
+  height: 200px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
+
 export {
   DurationWrapper,
   Item,
@@ -98,5 +110,7 @@ export {
   RadioButton,
   Input,
   Text,
-  Button
+  Button,
+  StyledTextarea,
+  TypingWrapper
 }

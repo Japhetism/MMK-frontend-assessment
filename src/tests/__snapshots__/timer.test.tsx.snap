@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The component rendered renders the Timer component without crashing 1`] = `
+<styled.div>
+  <CountdownTimer
+    minutes={0}
+    seconds={0}
+  />
+  <DurationSelector
+    canStartTimer={false}
+    durationOptions={
+      Array [
+        1,
+        2,
+        3,
+        4,
+        5,
+      ]
+    }
+    minutes={0}
+    setCanStartTimer={[Function]}
+    setMinutes={[Function]}
+    timerAction="Start"
+  />
+</styled.div>
+`;

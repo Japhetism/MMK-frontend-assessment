@@ -1,11 +1,10 @@
 import React from 'react';
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 import { shallow } from 'enzyme';
-
-import Screen from '../screens';
 import assert from 'assert';
+import Screen from '../screens';
 
-describe("The component rendered", () => {
+describe('The component rendered', () => {
 
   const wrapper = shallow(<Screen />);
 
@@ -19,5 +18,5 @@ describe("The component rendered", () => {
 
   it('should contain one typing component', () => {
     assert.equal(wrapper.find('Typing').length === 1, true);
-  })
+  });
 });

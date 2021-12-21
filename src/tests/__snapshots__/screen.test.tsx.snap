@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The component rendered renders the Screen component without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <Timer
+      durationOptions={
+        Array [
+          1,
+          2,
+          3,
+          4,
+          5,
+        ]
+      }
+      setDisableUserInput={[Function]}
+      setShowResult={[Function]}
+    />
+  </styled.div>
+  <styled.div>
+    <Typing
+      disableUserInput={true}
+      showResult={false}
+    />
+  </styled.div>
+</styled.div>
+`;

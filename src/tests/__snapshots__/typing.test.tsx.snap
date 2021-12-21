@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The component rendered renders the Typing component without crashing 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.input
+      name="autogeneratetext"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <styled.label />
+    <div>
+      Autogenerate Text
+    </div>
+  </styled.div>
+  <styled.textarea
+    onChange={[Function]}
+    value=""
+  />
+  <styled.textarea
+    disabled={false}
+    onChange={[Function]}
+  />
+</styled.div>
+`;
